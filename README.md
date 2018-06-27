@@ -28,15 +28,15 @@ whazzup.fetchData()
 
 ## The return
 The return of the promise returns a object from `IVAOResult` interface:
-```json
-{
-  "data": {
-    "updateTime" // Last update of the whazzup file,
-    "clientsConnected" // True number of connected clients at IVAO servers
-    "clientsRetrieved" // Number of connected clients that had their data got by the module
+```javascript
+const data = {
+  data: {
+    updateTime: , // Last update of the whazzup file,
+    clientsConnected: , // True number of connected clients at IVAO servers
+    clientsRetrieved: // Number of connected clients that had their data got by the module
   },
-  "pilots": [], // Array of pilots, respecting the IVAOPilot Class
-  "atcs":  // Array of ATCs, respecting the IVAOATC Class
+  pilots: [], // Array of pilots, respecting the IVAOPilot Class
+  atcs: [] // Array of ATCs, respecting the IVAOATC Class
 }
 ```
 In case of an error, an instance of `IVAORequestError` is returned.
