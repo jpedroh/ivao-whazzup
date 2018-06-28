@@ -37,7 +37,7 @@ export class IVAOPilot {
   public cruisingSpeed: string | null;
   public departure: string | null;
   public cruisingLevel: string | null;
-  public destination: string | null;
+  public arrival: string | null;
   public flightRules: FlightRules | null;
   public departureTime: string | null;
   public enrouteTime: number | null;

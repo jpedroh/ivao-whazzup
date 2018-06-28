@@ -21,7 +21,7 @@ export class IVAOPilot {
     public cruisingSpeed: string | null;
     public departure: string | null;
     public cruisingLevel: string | null;
-    public destination: string | null;
+    public arrival: string | null;
     public flightRules: FlightRules | null;
     public departureTime: string | null;
     public enrouteTime: number | null;
@@ -55,7 +55,7 @@ export class IVAOPilot {
         this.cruisingSpeed = data[10] || null;
         this.departure = data[11] || null;
         this.cruisingLevel = data[12] || null;
-        this.destination = data[13] || null;
+        this.arrival = data[13] || null;
         this.flightRules = <FlightRules>data[21] || null;
         this.departureTime = data[22] || null;
         this.enrouteTime = parseInt(data[24]) * 60 + parseInt(data[25]) || null;
