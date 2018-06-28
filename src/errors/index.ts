@@ -1,6 +1,6 @@
 export class IVAORequestError extends Error {
-  message: string;
-  errorInfo: any;
+  public message: string;
+  public errorInfo: any;
   constructor(errorInfo: any) {
     super();
     this.message = 'There was a problem accessing IVAO API';

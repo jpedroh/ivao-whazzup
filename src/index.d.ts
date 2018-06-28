@@ -4,56 +4,56 @@ export declare class Whazzup {
 }
 
 export declare class IVAOATC {
-  private vid: number;
-  private callsign: string;
-  private name: string;
-  private connectionTime: number;
-  private softwareName: string;
-  private softwareVersion: string;
-  private clientType: Client;
-  private frequency: string;
-  private facilityType: Facilty;
-  private rating: ATCRating;
+  public vid: number | null;
+  public callsign: string | null;
+  public name: string | null;
+  public connectionTime: number | null;
+  public softwareName: string | null;
+  public softwareVersion: string | null;
+  public clientType: Client | null;
+  public frequency: string | null;
+  public facilityType: Facilty | null;
+  public rating: ATCRating | null;
 }
 
 export class IVAOPilot {
-  private vid: number;
-  private callsign: string;
-  private name: string;
-  private connectionTime: number;
-  private softwareName: string;
-  private softwareVersion: string;
-  private clientType: Client;
-  private latitiude: number;
-  private longtitude: number;
-  private altitude: number;
-  private groundSpeed: number;
-  private heading: number;
-  private onGround: boolean;
-  private squawk: number;
-  private rating: PilotRating;
-  private fullAircraft: string;
-  private aircraft: string;
-  private cruisingSpeed: string;
-  private departure: string;
-  private cruisingLevel: string;
-  private destination: string;
-  private flightRules: FlightRules;
-  private departureTime: string;
-  private enrouteTime: number;
-  private endurace: number;
-  private alternate: string;
-  private remarks: string;
-  private route: string;
-  private alternate2: string;
-  private flightType: Flight;
-  private pob: number;
-  private simulator: Simulator;
+  public vid: number | null;
+  public callsign: string | null;
+  public name: string | null;
+  public connectionTime: number | null;
+  public softwareName: string | null;
+  public softwareVersion: string | null;
+  public clientType: Client | null;
+  public latitiude: number | null;
+  public longtitude: number | null;
+  public altitude: number | null;
+  public groundSpeed: number | null;
+  public heading: number | null;
+  public onGround: boolean | null;
+  public squawk: number | null;
+  public rating: PilotRating | null;
+  public fullAircraft: string | null;
+  public aircraft: string | null;
+  public cruisingSpeed: string | null;
+  public departure: string | null;
+  public cruisingLevel: string | null;
+  public destination: string | null;
+  public flightRules: FlightRules | null;
+  public departureTime: string | null;
+  public enrouteTime: number | null;
+  public endurace: number | null;
+  public alternate: string | null;
+  public remarks: string | null;
+  public route: string | null;
+  public alternate2: string | null;
+  public flightType: Flight | null;
+  public pob: number | null;
+  public simulator: Simulator | null;
 }
 
 export declare class IVAORequestError extends Error {
-  message: string;
-  errorInfo: any;
+  public message: string;
+  public errorInfo: any;
 }
 
 export declare interface IVAOResult {
