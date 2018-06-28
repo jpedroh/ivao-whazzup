@@ -1,3 +1,1 @@
-import { Whazzup } from './controllers';
-
-export default new Whazzup();
+export { Whazzup } from './controllers'

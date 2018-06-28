@@ -13,7 +13,7 @@ export interface IVAORequestResult {
   buffer: Array<string>;
 }
 
-interface IVAOResultData {
+export interface IVAOResultData {
   updateTime: number;
   clientsConnected: number;
   clientsRetrieved: number;
