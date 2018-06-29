@@ -1,5 +1,5 @@
-import { IVAOPilot } from '../models/pilot';
-import { IVAOATC } from '../models/atc';
+import { IVAOPilot } from './models/pilot';
+import { IVAOATC } from './models/atc';
 
 export interface IVAOResult {
   data: IVAOResultData;

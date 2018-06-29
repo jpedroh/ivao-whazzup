@@ -12,7 +12,7 @@ The function `fetchData()` will restore all data from IVAO's Whazzup and return 
 
 ### Javascript
 ```javascript
-const { Whazzup } = require('ivao-whazzup');
+const Whazzup = require('ivao-whazzup');
 new Whazzup().fetchData()
   .then(data => console.log(data))
   .catch(error => console.error(error));
@@ -20,7 +20,7 @@ new Whazzup().fetchData()
 
 ### TypeScript
 ```typescript
-import { Whazzup } from 'ivao-whazzup';
+import Whazzup from 'ivao-whazzup';
 new Whazzup().fetchData()
   .then(data => console.log(data))
   .catch(error => console.error(error));
