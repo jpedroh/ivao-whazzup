@@ -1,54 +1,96 @@
-import * as zlib from 'zlib';
-import * as request from 'request';
-import { IVAORequestError } from './errors';
-import { IVAOPilot } from './models/pilot';
-import { IVAOATC } from './models/atc';
-import { IVAOResult, IVAORequestResult } from './contracts';
-import { Client } from './models/enums';
+import * as request from 'request'
+import * as zlib from 'zlib'
+import { BuildModelsError } from './errors/build-models-error'
+import { ParseError } from './errors/parse-error'
+import { DownloadFileError } from './errors/download-file-error'
+import { WhazzupATC } from './models/atc'
+import { WhazzupPilot } from './models/pilot'
+import { Client } from './utils/enums'
+import { WhazzupFileContent } from './utils/whazzup-file-content'
+import { WhazzupRequestResult } from './utils/whazzup-request-result'
 
-export default class Whazzup {
+class WhazzupHandler {
+  private readonly WHAZZUP_URL: string = 'http://api.ivao.aero/getdata/whazzup/whazzup.txt.gz'
 
-  private getAPIData(): Promise<IVAORequestResult> {
-    return new Promise((resolve: any, reject: any) => {
+  /**
+   * Fetch Whazzup data from the IVAO Servers.
+   */
+  public fetchData(): Promise<WhazzupRequestResult> {
+    return this.downloadWhazzupFile()
+      .then(this.parseWhazzupFile)
+      .then(this.buildModels)
+  }
+
+  /**
+   * Download the Whazzup File from IVAO Server.
+   */
+  private downloadWhazzupFile(): Promise<Buffer> {
+    return new Promise((res, rej) => {
       request.get({
-        url : 'http://api.ivao.aero/getdata/whazzup/whazzup.txt.gz',
+        encoding: null,
         headers: {
-            'Accept-Encoding' : 'gzip',
-          },
-        encoding : null
-      }, (error: Error, res: any, body: string) => {
-        if(error) reject(new IVAORequestError(error));
-        zlib.unzip(body, (error: Error | null, buffer: Buffer): void => {
-          if(error) reject(new IVAORequestError(error));
-          const data = buffer.toString();
-          const beginGeneral = data.indexOf("!GENERAL");
-          const beginClients = data.indexOf("!CLIENTS");
-          const end = data.indexOf("!AIRPORTS");
-          const generalInfo = data.substr(beginGeneral + 9, beginClients - 10).split('\n')
-          resolve({
-            clientsConnected: parseInt(generalInfo[3].substr(generalInfo[3].indexOf('=') + 1)),
-            updateTime: parseInt(generalInfo[2].substr(generalInfo[2].indexOf('=') + 2)),
-            buffer: data.substr(beginClients + 10, end - beginClients - 12).split('\n')
-          });
-        })
+          'Accept-Encoding' : 'gzip',
+        },
+        url: this.WHAZZUP_URL,
+      }, (error, response, body) => {
+        if (error || response.statusCode !== 200) {
+          rej(new DownloadFileError(`There was a problem downloading the Whazzup File.
+          The server answered with a ${response.statusCode} error`))
+        }
+        res(body)
       })
     })
   }
 
-  public fetchData(): Promise<IVAOResult> {
-    return this.getAPIData()
-      .then((data: IVAORequestResult) => {
-        const result: IVAOResult = { data: { updateTime: data.updateTime, clientsConnected: data.clientsConnected, clientsRetrieved: 0 }, pilots: [], atcs: [] };
-        for (const line of data.buffer) {
-          const traffic: Array<string> = line.split(':');
-          result.data.clientsRetrieved++;
-          traffic[3] == Client.Pilot ? result.pilots.push(new IVAOPilot(traffic)) : result.atcs.push(new IVAOATC(traffic));
-        }     
-        if(result.data.clientsRetrieved < result.data.clientsConnected) {
-          console.warn(`Not all clients were sucessfully retrieved! ${result.data.clientsRetrieved}/${result.data.clientsConnected} retrieved`);
+  /**
+   * Parses the Whazzup File downloaded from IVAO Server.
+   */
+  private parseWhazzupFile(whazzupFile: Buffer): Promise<WhazzupFileContent> {
+    return new Promise((res, rej) => {
+      zlib.unzip(whazzupFile, (error: Error | null, buffer: Buffer): void => {
+        if (error) {
+          rej(new ParseError('There was a problem parsing the Whazzup file'))
         }
-        return result;
+        const fileData: string = buffer.toString()
+        const generalDataBegin: number = fileData.indexOf('!GENERAL')
+        const clientsDataBegin: number = fileData.indexOf('!CLIENTS')
+        const airportsDataBegin: number = fileData.indexOf('!AIRPORTS')
+        const clientsData: string[] = fileData.substr(clientsDataBegin + 10,
+          airportsDataBegin - clientsDataBegin - 12).split('\n')
+        const generalData: string[] = fileData.substr(generalDataBegin + 9,
+          clientsDataBegin - 10).split('\n')
+        const whazzupFileContent: WhazzupFileContent = new WhazzupFileContent(generalData, clientsData)
+        res(whazzupFileContent)
       })
+    })
   }
 
+  /**
+   * Build models from the parsed Whazzup file data.
+   */
+  private buildModels(fileContent: WhazzupFileContent): Promise<WhazzupRequestResult> {
+    return new Promise((res, rej) => {
+      try {
+        const retrievedPilots: WhazzupPilot[] = []
+        const retrievedATCs: WhazzupATC[] = []
+        let retrievedClients: number = 0
+        for (const line of fileContent.clientsData) {
+          const clientData: string[] = line.split(':')
+          if (clientData[3] === Client.Pilot) {
+            retrievedPilots.push(new WhazzupPilot(clientData))
+          } else {
+            retrievedATCs.push(new WhazzupATC(clientData))
+          }
+          retrievedClients++
+        }
+        const requestResult: WhazzupRequestResult = new WhazzupRequestResult(fileContent, retrievedPilots,
+          retrievedATCs, retrievedClients)
+        res(requestResult)
+      } catch (error) {
+        rej(new BuildModelsError('There was a problem building the models'))
+      }
+    })
+  }
 }
+
+export const Whazzup = new WhazzupHandler()

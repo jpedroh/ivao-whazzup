@@ -1,19 +1,19 @@
 export enum Client {
   Pilot = 'PILOT',
   ATC = 'ATC',
-  FOLME = 'FOLME'
+  FOLME = 'FOLME',
 }
 
 export enum Facilty {
-  Observer, FlightInformation, Delivery, Ground, Tower, Approach, ACC, Departure
+  Observer, FlightInformation, Delivery, Ground, Tower, Approach, ACC, Departure,
 }
 
 export enum PilotRating {
-  Observer = 1, FS1, FS2, FS3, PP, SPP, CP, ATP, SFI, CFI
+  Observer = 1, FS1, FS2, FS3, PP, SPP, CP, ATP, SFI, CFI,
 }
 
 export enum ATCRating {
-  Observer = 1, AS1, AS2, AS3, ADC, APC, ACC, SEC, SAI, CAI
+  Observer = 1, AS1, AS2, AS3, ADC, APC, ACC, SEC, SAI, CAI,
 }
 
 export enum Simulator {
@@ -37,14 +37,14 @@ export enum Simulator {
   Fly = 20,
   Fly2 = 21,
   FlightGear = 25,
-  Prepar3D1 = 30
+  Prepar3D1 = 30,
 }
 
 export enum FlightRules {
   IFR = 'IFR',
   VFR = 'VFR',
   Y = 'Y',
-  Z = 'Z'
+  Z = 'Z',
 }
 
 export enum Flight {
@@ -52,5 +52,5 @@ export enum Flight {
   NonScheduled = 'N',
   Geral = 'G',
   Military = 'M',
-  Other = 'X'
+  Other = 'X',
 }

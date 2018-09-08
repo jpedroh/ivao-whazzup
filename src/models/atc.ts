@@ -1,28 +1,28 @@
-import { ATCRating, Client, Facilty } from './enums';
+import { ATCRating, Client, Facilty } from '../utils/enums'
 
-export class IVAOATC {
-  public vid: number | null;
-  public callsign: string | null;
-  public name: string | null;
-  public connectionTime: number | null;
-  public softwareName: string | null;
-  public softwareVersion: string | null;
-  public clientType: Client | null;
-  public frequency: string | null;
-  public facilityType: Facilty | null;
-  public rating: ATCRating | null;
+export class WhazzupATC {
+  public vid: number
+  public callsign: string
+  public name: string
+  public connectionTime: number
+  public softwareName: string
+  public softwareVersion: string
+  public clientType: Client
+  public frequency: string
+  public facilityType: Facilty
+  public rating: ATCRating
 
-  constructor(data: Array<string>) {
-    this.callsign = data[0] || null;
-    this.vid = parseInt(data[1]) || null;
-    this.name = data[2] || null;
-    this.connectionTime = parseInt(data[37]) || null;
-    this.softwareName = data[38] || null;
-    this.softwareVersion = data[39] || null;
-    this.clientType = <Client>data[3] || null;
-    this.frequency = data[4] || null;
-    this.facilityType = parseInt(data[18]) || null;
-    this.rating = parseInt(data[41]) || null;
+  constructor(data: string[]) {
+    this.callsign = data[0]
+    this.vid = parseInt(data[1], 10)
+    this.name = data[2]
+    this.connectionTime = parseInt(data[37], 10)
+    this.softwareName = data[38]
+    this.softwareVersion = data[39]
+    this.clientType = data[3] as Client
+    this.frequency = data[4]
+    this.facilityType = parseInt(data[18], 10)
+    this.rating = parseInt(data[41], 10)
   }
 
 }

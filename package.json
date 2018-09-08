@@ -1,10 +1,12 @@
 {
   "name": "ivao-whazzup",
-  "version": "0.7.0",
+  "version": "1.0.2",
   "description": "A lib for getting IVAO Whazzup data",
   "author": "Joao Pedro Henrique <joao.pedro.hsd@gmail.com>",
-  "scripts" : {
-    "build": "tsc"
+  "scripts": {
+    "build": "tsc",
+    "test": "jest",
+    "lint": "tslint -c tslint.json 'src/**/*.ts'"
   },
   "repository": {
     "type": "git",
@@ -14,9 +16,31 @@
   "license": "MIT",
   "dependencies": {
     "request": "^2.87.0",
+    "tslint": "^5.11.0",
     "zlib": "^1.0.5"
   },
   "devDependencies": {
-    "@types/request": "^2.47.1"
+    "@types/jest": "^23.1.6",
+    "@types/node": "^10.5.2",
+    "@types/request": "^2.47.1",
+    "jest": "^23.4.1",
+    "jest-cli": "^23.4.1",
+    "ts-jest": "^23.0.0",
+    "typescript": "^2.9.2"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ]
   }
 }

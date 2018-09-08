@@ -1,5 +1,5 @@
 # ivao-whazzup
-A lib for getting IVAO Whazzup data.
+A lib for getting and parsing IVAO Whazzup data.
 
 ## Installation 
 ```sh
@@ -8,35 +8,50 @@ yarn add ivao-whazzup
 ```
 
 ## Usage
-The function `fetchData()` will restore all data from IVAO's Whazzup and return you back in a JSON file.
+The function `fetchData()` will restore data from the IVAO Whazzup file.
 
 ### Javascript
 ```javascript
-const Whazzup = require('ivao-whazzup');
-new Whazzup().fetchData()
+const { Whazzup } = require('ivao-whazzup');
+Whazzup.fetchData()
   .then(data => console.log(data))
   .catch(error => console.error(error));
 ```
 
 ### TypeScript
 ```typescript
-import Whazzup from 'ivao-whazzup';
-new Whazzup().fetchData()
+import { Whazzup } from 'ivao-whazzup';
+Whazzup.fetchData()
   .then(data => console.log(data))
   .catch(error => console.error(error));
 ```
 
 ## The return
-The return of the promise returns a object from `IVAOResult` interface:
-```javascript
-const data = {
-  data: {
-    updateTime: , // Last update of the whazzup file,
-    clientsConnected: , // True number of connected clients at IVAO servers
-    clientsRetrieved: // Number of connected clients that had their data got by the module
-  },
-  pilots: [], // Array of pilots, respecting the IVAOPilot Class
-  atcs: [] // Array of ATCs, respecting the IVAOATC Class
+The function `fetchData()` returns a `Promise` with an instance of `WhazzupRequestResult`, which contains:
+```json
+{
+  "data": "IWhazzupRequestData",
+  "pilots": "WhazzupPilot[]",
+  "atcs": "WhazzupATC[]"
 }
 ```
-In case of an error, an instance of `IVAORequestError` is returned.
+Please refer to the [models] (https://github.com/jpedroh/ivao-whazzup/tree/master/src/models) directory to be aware of the structure of each client. The `data` object, has the following structure, respecting the `IWhazzupRequestData` interface.
+```json
+{
+  "lastUpdate": "Date",
+  "connectedClients": "number",
+  "retrievedClients": "number"
+}
+```
+
+## Errors
+There are 3 instances of errors.
+
+### `DownloadFileError`
+Will be thrown every time there's a problem downloading the Whazzup file.
+
+### `ParseError`
+Will be thrown every time there's a problem parsing the `gzip` file. Please be aware that `.txt` download is not supported, since it's asked by the IVAO docs that the `.gzip` file has the priority due to bandwidth.
+
+### `BuildModels`
+Will be thrown every time that for some reason a problem occurs while building the clients models.
