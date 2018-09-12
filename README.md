@@ -44,6 +44,10 @@ Please refer to the [models] (https://github.com/jpedroh/ivao-whazzup/tree/maste
 }
 ```
 
+## Use terms
+Please be aware, that IVAO has strong limitations to requests Whazzup file. There is one request per 2 minutes for divisions, per 3 minutes for VA, per 5 minutes for all.
+Take this into account, cause if you use this tool for getting whazzup info outside the official time window, you can be banned from retrieving new whazzups by IP protection.
+
 ## Errors
 There are 3 instances of errors.
 

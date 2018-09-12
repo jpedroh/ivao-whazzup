@@ -1,6 +1,6 @@
 {
   "name": "ivao-whazzup",
-  "version": "1.0.2",
+  "version": "1.0.4",
   "description": "A lib for getting IVAO Whazzup data",
   "author": "Joao Pedro Henrique <joao.pedro.hsd@gmail.com>",
   "scripts": {
