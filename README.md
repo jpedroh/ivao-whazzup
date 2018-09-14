@@ -35,7 +35,7 @@ The function `fetchData()` returns a `Promise` with an instance of `WhazzupReque
   "atcs": "WhazzupATC[]"
 }
 ```
-Please refer to the [models] (https://github.com/jpedroh/ivao-whazzup/tree/master/src/models) directory to be aware of the structure of each client. The `data` object, has the following structure, respecting the `IWhazzupRequestData` interface.
+Please refer to the [models](https://github.com/jpedroh/ivao-whazzup/tree/master/src/models) directory to be aware of the structure of each client. The `data` object, has the following structure, respecting the `IWhazzupRequestData` interface.
 ```json
 {
   "lastUpdate": "Date",
@@ -45,8 +45,13 @@ Please refer to the [models] (https://github.com/jpedroh/ivao-whazzup/tree/maste
 ```
 
 ## Use terms
-Please be aware, that IVAO has strong limitations to requests Whazzup file. There is one request per 2 minutes for divisions, per 3 minutes for VA, per 5 minutes for all.
-Take this into account, cause if you use this tool for getting whazzup info outside the official time window, you can be banned from retrieving new whazzups by IP protection.
+Refer to [IVAO Regulations D.4](https://doc.ivao.aero/rules2:regulations#devops)
+> D.4 Whazzup usage (live network data)
+> 1. Whazzup is not any longer subject for an approval issued by DEVOPs. Whazzup feed is free to use for everyone.
+> 2. Whazzup feed is provided as plain text file.
+> 3. To reduce data load, this file is served as gzip-compressed archive and must be handled on the users end accordingly.
+> 4. The maximum refresh time of the Whazzup feed is once per 3 minutes.
+> 5. If DEVOPs detects a refresh rate shorter than 3 minutes, DEVOPs reserves the right to ban the source IP address requesting Whazzup feed temporarily or permanently.
 
 ## Errors
 There are 3 instances of errors.
