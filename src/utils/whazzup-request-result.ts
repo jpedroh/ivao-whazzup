@@ -1,14 +1,14 @@
-import { WhazzupATC } from '../models/atc'
-import { WhazzupPilot } from '../models/pilot'
+import { IvaoATC } from '../models/ivao-atc'
+import { IvaoPilot } from '../models/ivao-pilot'
 import { WhazzupFileContent } from './whazzup-file-content'
 import { IWhazzupRequestData } from './whazzup-request-data'
 
 export class WhazzupRequestResult {
     public data: IWhazzupRequestData
-    public pilots: WhazzupPilot[]
-    public atcs: WhazzupATC[]
+    public pilots: IvaoPilot[]
+    public atcs: IvaoATC[]
 
-    constructor(fileContent: WhazzupFileContent, retrievedPilots: WhazzupPilot[], retrievedATCs: WhazzupATC[],
+    constructor(fileContent: WhazzupFileContent, retrievedPilots: IvaoPilot[], retrievedATCs: IvaoATC[],
                 retrievedClientsNumber: number) {
         this.data = {
             connectedClients: fileContent.connectedClients,

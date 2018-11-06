@@ -28,32 +28,32 @@ declare module 'ivao-whazzup' {
         private buildModels(fileContent: WhazzupFileContent): Promise<WhazzupRequestResult>
     }
 
-    export class WhazzupATC {
-        public vid: number
+    export class IvaoClient {
         public callsign: string
+        public vid: number
         public name: string
+        public clientType: Client
+        public latitiude: number
+        public longtitude: number
+        public altitude: number
         public connectionTime: number
         public softwareName: string
         public softwareVersion: string
+    
+        constructor(clientData: string[])
+    }
+
+    export class IvaoATC extends IvaoClient {
         public clientType: Client
         public frequency: string
         public facilityType: Facilty
         public rating: ATCRating
 
-        constructor(data: string[])
+        constructor(clientData: string[])
     }
 
-    export class WhazzupPilot {
-        public vid: number
-        public callsign: string
-        public name: string
-        public connectionTime: number
-        public softwareName: string
-        public softwareVersion: string
-        public clientType: Client
-        public latitiude: number
-        public longtitude: number
-        public altitude: number
+
+    export class IvaoPilot extends IvaoClient {
         public groundSpeed: number
         public heading: number
         public onGround: boolean
@@ -77,7 +77,7 @@ declare module 'ivao-whazzup' {
         public pob: number
         public simulator: Simulator
 
-        constructor(data: string[])
+        constructor(clientData: string[])
     }
 
     export enum Client {
@@ -153,10 +153,10 @@ declare module 'ivao-whazzup' {
 
     export class WhazzupRequestResult {
         public data: IWhazzupRequestData
-        public pilots: WhazzupPilot[]
-        public atcs: WhazzupATC[]
+        public pilots: IvaoPilot[]
+        public atcs: IvaoATC[]
 
-        constructor(fileContent: WhazzupFileContent, retrievedPilots: WhazzupPilot[], retrievedATCs: WhazzupATC[],
+        constructor(fileContent: WhazzupFileContent, retrievedPilots: IvaoPilot[], retrievedATCs: IvaoATC[],
             retrievedClientsNumber: number)
     }
 

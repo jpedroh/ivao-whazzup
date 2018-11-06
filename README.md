@@ -1,5 +1,6 @@
 # ivao-whazzup
 A lib for getting and parsing IVAO Whazzup data.
+Page on npm: [https://www.npmjs.com/package/ivao-whazzup](https://www.npmjs.com/package/ivao-whazzup)
 
 ## Installation 
 ```sh
@@ -31,8 +32,8 @@ The function `fetchData()` returns a `Promise` with an instance of `WhazzupReque
 ```json
 {
   "data": "IWhazzupRequestData",
-  "pilots": "WhazzupPilot[]",
-  "atcs": "WhazzupATC[]"
+  "pilots": "IvaoPilot[]",
+  "atcs": "IvaoATC[]"
 }
 ```
 Please refer to the [models](https://github.com/jpedroh/ivao-whazzup/tree/master/src/models) directory to be aware of the structure of each client. The `data` object, has the following structure, respecting the `IWhazzupRequestData` interface.

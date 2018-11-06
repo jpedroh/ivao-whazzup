@@ -1,11 +1,11 @@
 import * as request from 'request'
 import * as zlib from 'zlib'
 import { BuildModelsError } from './errors/build-models-error'
-import { ParseError } from './errors/parse-error'
 import { DownloadFileError } from './errors/download-file-error'
-import { WhazzupATC } from './models/atc'
-import { WhazzupPilot } from './models/pilot'
-import { Client } from './utils/enums'
+import { ParseError } from './errors/parse-error'
+import { IvaoATC } from './models/ivao-atc'
+import { IvaoPilot } from './models/ivao-pilot'
+import { isPilot } from './utils/is-pilot'
 import { WhazzupFileContent } from './utils/whazzup-file-content'
 import { WhazzupRequestResult } from './utils/whazzup-request-result'
 
@@ -55,7 +55,7 @@ class WhazzupHandler {
         const generalDataBegin: number = fileData.indexOf('!GENERAL')
         const clientsDataBegin: number = fileData.indexOf('!CLIENTS')
         const airportsDataBegin: number = fileData.indexOf('!AIRPORTS')
-        const clientsData: string[] = fileData.substr(clientsDataBegin + 10,
+        const clientsData: string[] = fileData.substr(clientsDataBegin + 9,
           airportsDataBegin - clientsDataBegin - 12).split('\n')
         const generalData: string[] = fileData.substr(generalDataBegin + 9,
           clientsDataBegin - 10).split('\n')
@@ -71,20 +71,20 @@ class WhazzupHandler {
   private buildModels(fileContent: WhazzupFileContent): Promise<WhazzupRequestResult> {
     return new Promise((res, rej) => {
       try {
-        const retrievedPilots: WhazzupPilot[] = []
-        const retrievedATCs: WhazzupATC[] = []
-        let retrievedClients: number = 0
+        const retrievedPilots: IvaoPilot[] = []
+        const retrievedATCs: IvaoATC[] = []
+        let retrievedClientsNumber: number = 0
         for (const line of fileContent.clientsData) {
           const clientData: string[] = line.split(':')
-          if (clientData[3] === Client.Pilot) {
-            retrievedPilots.push(new WhazzupPilot(clientData))
+          if (isPilot(clientData)) {
+            retrievedPilots.push(new IvaoPilot(clientData))
           } else {
-            retrievedATCs.push(new WhazzupATC(clientData))
+            retrievedATCs.push(new IvaoATC(clientData))
           }
-          retrievedClients++
+          retrievedClientsNumber++
         }
         const requestResult: WhazzupRequestResult = new WhazzupRequestResult(fileContent, retrievedPilots,
-          retrievedATCs, retrievedClients)
+          retrievedATCs, retrievedClientsNumber)
         res(requestResult)
       } catch (error) {
         rej(new BuildModelsError('There was a problem building the models'))
