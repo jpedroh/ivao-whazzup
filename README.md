@@ -1,6 +1,9 @@
 # ivao-whazzup
+[![Build Status](https://travis-ci.org/jpedroh/ivao-whazzup.svg?branch=master)](https://travis-ci.org/jpedroh/ivao-whazzup)
+[![npm version](https://badge.fury.io/js/ivao-whazzup.svg)](https://badge.fury.io/js/ivao-whazzup)
+[![Coverage Status](https://coveralls.io/repos/github/jpedroh/ivao-whazzup/badge.svg?branch=master)](https://coveralls.io/github/jpedroh/ivao-whazzup?branch=master)
+
 A lib for getting and parsing IVAO Whazzup data.
-Page on npm: [https://www.npmjs.com/package/ivao-whazzup](https://www.npmjs.com/package/ivao-whazzup)
 
 ## Installation 
 ```sh
