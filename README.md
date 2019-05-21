@@ -1,7 +1,7 @@
 # ivao-whazzup
-[![Build Status](https://travis-ci.org/jpedroh/ivao-whazzup.svg?branch=master)](https://travis-ci.org/jpedroh/ivao-whazzup)
 [![npm version](https://badge.fury.io/js/ivao-whazzup.svg)](https://badge.fury.io/js/ivao-whazzup)
-[![Coverage Status](https://coveralls.io/repos/github/jpedroh/ivao-whazzup/badge.svg?branch=master)](https://coveralls.io/github/jpedroh/ivao-whazzup?branch=master)
+[![pipeline status](https://gitlab.com/jpedroh/ivao-whazzup/badges/master/pipeline.svg)](https://gitlab.com/jpedroh/ivao-whazzup/commits/master)
+[![coverage report](https://gitlab.com/jpedroh/ivao-whazzup/badges/master/coverage.svg)](https://gitlab.com/jpedroh/ivao-whazzup/commits/master)
 
 A lib for getting and parsing IVAO Whazzup data.
 

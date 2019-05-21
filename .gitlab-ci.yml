@@ -1,0 +1,15 @@
+stages:
+  - test
+
+test:
+  image: node:lts-alpine
+  stage: test
+  only:
+    - master
+  cache:
+    key: ${CI_COMMIT_REF_SLUG}
+    paths:
+    - node_modules/
+  script:
+    - npm install --progress=false
+    - npm run test
