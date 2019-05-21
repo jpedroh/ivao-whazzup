@@ -7,7 +7,7 @@
     "build": "tsc",
     "test": "jest",
     "lint": "tslint -c tslint.json 'src/**/*.ts'",
-    "coveralls": "jest --coverage && cat ./__tests__/coverage/lcov.info | coveralls"
+    "ci": "jest --coverage"
   },
   "repository": {
     "type": "git",
