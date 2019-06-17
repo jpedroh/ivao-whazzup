@@ -25,8 +25,8 @@
     "@types/node": "^10.5.2",
     "@types/request": "^2.47.1",
     "coveralls": "^3.0.3",
-    "jest": "^23.4.1",
-    "jest-cli": "^23.4.1",
+    "jest": "^24.8.0",
+    "jest-cli": "^24.8.0",
     "ts-jest": "^23.0.0",
     "typescript": "^2.9.2"
   },
