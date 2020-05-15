@@ -33,8 +33,8 @@ declare module 'ivao-whazzup' {
         public vid: number
         public name: string
         public clientType: Client
-        public latitiude: number
-        public longtitude: number
+        public latitude: number
+        public longitude: number
         public altitude: number
         public connectionTime: number
         public softwareName: string

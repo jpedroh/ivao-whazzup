@@ -5,8 +5,8 @@ export class IvaoClient {
     public vid: number
     public name: string
     public clientType: Client
-    public latitiude: number
-    public longtitude: number
+    public latitude: number
+    public longitude: number
     public altitude: number
     public connectionTime: number
     public softwareName: string
@@ -20,8 +20,8 @@ export class IvaoClient {
         this.softwareName = clientData[38]
         this.softwareVersion = clientData[39]
         this.clientType = clientData[3] as Client
-        this.latitiude = parseFloat(clientData[5])
-        this.longtitude = parseFloat(clientData[6])
+        this.latitude = parseFloat(clientData[5])
+        this.longitude = parseFloat(clientData[6])
         this.altitude = parseInt(clientData[7], 10)
     }
 
