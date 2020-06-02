@@ -6,7 +6,8 @@
     "preserveConstEnums": true,
     "sourceMap": true,
     "outDir": "dist/",
-    "declaration": true
+    "declaration": true,
+    "resolveJsonModule": true
   },
   "include": ["src/**/*.ts"],
   "exclude": ["node_modules"]

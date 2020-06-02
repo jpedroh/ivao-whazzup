@@ -1,0 +1,8 @@
+{
+  "generalInformation": {
+    "version": 6,
+    "minutesUntilReload": 1,
+    "lastUpdatedAt": "2020-06-02T20:55:14.000Z",
+    "totalConnections": { "clients": 1052, "servers": 8, "airports": 0 }
+  }
+}
