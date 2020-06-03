@@ -27,5 +27,6 @@ describe('Integration Testing', () => {
 
     expect(ivaoData.servers.length).toEqual(ivaoData.generalInformation.totalConnections.servers);
     expect(ivaoData.airports.length).toEqual(ivaoData.generalInformation.totalConnections.airports);
+    expect(ivaoData.clients.length).toEqual(ivaoData.generalInformation.totalConnections.clients);
   });
 });
