@@ -26,7 +26,12 @@ jobs:
         run: yarn install
 
       - name: Test
-        run: yarn test:unit
+        run: yarn test:unit-coverage
+        
+      - name: Upload code coverage
+        uses: coverallsapp/github-action@master
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
   integration-testing:
     runs-on: ubuntu-latest
     steps:
