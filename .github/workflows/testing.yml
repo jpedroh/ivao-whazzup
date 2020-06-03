@@ -1,0 +1,42 @@
+name: Test
+on: [push, pull_request]
+jobs:
+  linting:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          persist-credentials: false
+
+      - name: Install
+        run: npm install
+
+      - name: Linting
+        run: npm run-script lint
+  unit-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          persist-credentials: false
+
+      - name: Install
+        run: npm install
+
+      - name: Test
+        run: npm run-script test:unit
+  integration-testing:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          persist-credentials: false
+
+      - name: Install
+        run: npm install
+
+      - name: Test
+        run: npm run-script test:integration
