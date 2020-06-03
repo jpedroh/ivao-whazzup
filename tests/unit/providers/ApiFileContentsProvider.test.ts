@@ -1,4 +1,5 @@
 import ApiFileContentsProvider from '../../../src/providers/ApiFileContentsProvider';
+import FileContentsRetrievalException from '../../../src/exception/FileContentsRetrievalException';
 
 describe('ApiFileContentsProvider', () => {
   const httpClientMock = {
@@ -17,6 +18,14 @@ describe('ApiFileContentsProvider', () => {
     test('Return value should be lines in an array', async () => {
       const lines = await provider.getFileLines();
       expect(lines.length).toEqual(2);
+    });
+  });
+
+  describe('Given server responds with an error', () => {
+    httpClientMock.get.mockImplementationOnce(() => Promise.reject());
+
+    test('It should encapsulate error into a FileContentsRetrievalException', () => {
+      expect(provider.getFileLines()).rejects.toBeInstanceOf(FileContentsRetrievalException);
     });
   });
 });

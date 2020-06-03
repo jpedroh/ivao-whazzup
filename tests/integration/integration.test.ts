@@ -5,12 +5,12 @@ describe('Integration Testing', () => {
   let builder: IvaoWhazzupBuilder;
 
   beforeEach(() => {
-    builder = IvaoWhazzup.reset();
+    builder = IvaoWhazzup.makeBuilder();
   });
 
   test('Testing with custom provider', async () => {
     const customProvider = {
-      getFileLines: async () => await import('./fixtures/whazzup-file-lines.json'),
+      getFileLines: () => import('./fixtures/whazzup-file-lines.json'),
     };
     const expectedSerializedOutput = JSON.stringify(await import('./fixtures/expected-whazzup-output.json'));
 

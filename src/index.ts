@@ -5,4 +5,6 @@ import sessionExtractors from './extractors';
 
 const defaultContentsProvider = new ApiFileContentsProvider(new AxiosHttpClient());
 
-export default new IvaoWhazzupBuilder(defaultContentsProvider, sessionExtractors);
+export default {
+  makeBuilder: (): IvaoWhazzupBuilder => new IvaoWhazzupBuilder(defaultContentsProvider, sessionExtractors),
+};
