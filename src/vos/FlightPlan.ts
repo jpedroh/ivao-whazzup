@@ -1,6 +1,6 @@
 import FlightRule from '../enum/FlightRule';
 import Aircraft from './Aircraft';
-import { FlightType } from '../enum/FlightType';
+import FlightType from '../enum/FlightType';
 
 export default class FlightPlan {
   public readonly aircraft: Aircraft;
