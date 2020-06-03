@@ -8,8 +8,9 @@ export default abstract class BaseExtractor {
     return lines.slice(sessionBeginIndex);
   }
 
-  protected getValueByIndex<T>(sessionContents: string[], index: number, formatter: (value: string) => T): T {
-    const value = sessionContents[index];
-    return formatter(value);
+  protected getValueByIndex(contents: string[], index: number): string;
+  protected getValueByIndex<T>(contents: string[], index: number, formatter: (v: string) => T): T;
+  protected getValueByIndex<T>(contents: string[], index: number, formatter?: (v: string) => T): T | string {
+    return formatter ? formatter(contents[index]) : contents[index];
   }
 }
