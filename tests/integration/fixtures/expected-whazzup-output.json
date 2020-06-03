@@ -23,10 +23,39 @@
       "maximumConnections": 1000
     }
   ],
-  "airports": [
+  "airports": [{ "icao": "SBBV", "atis": "THIS IS JUST AN EXAMPLE" }],
+  "clients": [
     {
-      "icao": "SBBV",
-      "atis": "THIS IS JUST AN EXAMPLE"
+      "callsign": "BR-AOC",
+      "member": { "vid": 205631, "name": "205631", "rating": 7, "administrativeRating": 2 },
+      "position": { "latitude": -15.8719, "longitude": -48.0219, "altitude": 0 },
+      "connection": {
+        "type": "ATC",
+        "connectionTime": "2020-06-02T20:50:09.000Z",
+        "serverName": "SHARD1",
+        "protocolVersion": "B"
+      },
+      "software": { "name": "ATCClient", "version": "1.1.75 b" },
+      "frequency": "118.050",
+      "facilityType": 0,
+      "visualRange": 300,
+      "atis": { "content": "", "definedAt": "2020-06-02T20:51:48.000Z" }
+    },
+    {
+      "callsign": "BR-TA5",
+      "member": { "vid": 521551, "name": "521551", "rating": 5, "administrativeRating": 2 },
+      "position": { "latitude": -8.12639, "longitude": -34.9228, "altitude": 0 },
+      "connection": {
+        "type": "ATC",
+        "connectionTime": "2020-06-02T18:24:44.000Z",
+        "serverName": "SHARD1",
+        "protocolVersion": "B"
+      },
+      "software": { "name": "ATCClient", "version": "1.1.75 b" },
+      "frequency": "199.999",
+      "facilityType": 0,
+      "visualRange": 300,
+      "atis": { "content": "NO VOICE/BR-TA5", "definedAt": "2020-06-02T18:24:46.000Z" }
     }
   ]
 }
