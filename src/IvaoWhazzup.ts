@@ -1,20 +1,20 @@
-import FileSessionExtractor from './extractors/FileSessionExtractor';
+import FileSectionExtractor from './extractors/FileSectionExtractor';
 import FileContentsProvider from './providers/FileContentsProvider';
 import WhazzupFile from './WhazzupFile';
 
 export default class IvaoWhazzup {
   private fileContentsProvider: FileContentsProvider;
-  private fileSessionsExtractors: FileSessionExtractor[];
+  private fileSectionsExtractors: FileSectionExtractor[];
 
-  public constructor(fileContentsProvider: FileContentsProvider, fileSessionsExtractors: FileSessionExtractor[]) {
+  public constructor(fileContentsProvider: FileContentsProvider, fileSectionsExtractors: FileSectionExtractor[]) {
     this.fileContentsProvider = fileContentsProvider;
-    this.fileSessionsExtractors = fileSessionsExtractors;
+    this.fileSectionsExtractors = fileSectionsExtractors;
   }
 
   public async fetchData(): Promise<WhazzupFile> {
     const fileLines = await this.fileContentsProvider.getFileLines();
 
-    return this.fileSessionsExtractors
+    return this.fileSectionsExtractors
       .map((processor) => processor.extractFromFileLines(fileLines))
       .reduce(this.mergeSessionsIntoWhazzupFileObject) as WhazzupFile;
   }

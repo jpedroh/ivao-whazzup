@@ -3,6 +3,24 @@
     "version": 6,
     "minutesUntilReload": 1,
     "lastUpdatedAt": "2020-06-02T20:55:14.000Z",
-    "totalConnections": { "clients": 1052, "servers": 8, "airports": 0 }
-  }
+    "totalConnections": { "clients": 1052, "servers": 2, "airports": 0 }
+  },
+  "servers": [
+    {
+      "ident": "EU16",
+      "host": "5.135.66.181",
+      "location": "Europe",
+      "name": "IVAO EU16 - IVAO Network",
+      "clientConnectionsAllowed": true,
+      "maximumConnections": 1000
+    },
+    {
+      "ident": "EU15",
+      "host": "5.135.66.180",
+      "location": "Europe",
+      "name": "IVAO EU15 - IVAO Network",
+      "clientConnectionsAllowed": false,
+      "maximumConnections": 1000
+    }
+  ]
 }

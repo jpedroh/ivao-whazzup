@@ -1,6 +1,7 @@
 import GeneralInformationExtractor from './GeneralInformationExtractor';
-import FileSessionExtractor from './FileSessionExtractor';
+import FileSectionExtractor from './FileSectionExtractor';
+import ServersExtractor from './ServersExtractor';
 
-const extractors: FileSessionExtractor[] = [new GeneralInformationExtractor()];
+const extractors: FileSectionExtractor[] = [new GeneralInformationExtractor(), new ServersExtractor()];
 
 export default extractors;

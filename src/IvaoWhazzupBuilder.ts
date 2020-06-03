@@ -1,14 +1,14 @@
 import FileContentsProvider from './providers/FileContentsProvider';
 import IvaoWhazzup from './IvaoWhazzup';
-import FileSessionExtractor from './extractors/FileSessionExtractor';
+import FileSectionExtractor from './extractors/FileSectionExtractor';
 
 export default class IvaoWhazzupBuilder {
   private fileContentsProvider: FileContentsProvider;
-  private sessionExtractors: FileSessionExtractor[];
+  private sectionsExtractors: FileSectionExtractor[];
 
-  public constructor(fileContentsProvider: FileContentsProvider, sessionExtractors: FileSessionExtractor[]) {
+  public constructor(fileContentsProvider: FileContentsProvider, sectionsExtractors: FileSectionExtractor[]) {
     this.fileContentsProvider = fileContentsProvider;
-    this.sessionExtractors = sessionExtractors;
+    this.sectionsExtractors = sectionsExtractors;
   }
 
   public overridingFileContentsProvider(provider: FileContentsProvider): IvaoWhazzupBuilder {
@@ -17,6 +17,6 @@ export default class IvaoWhazzupBuilder {
   }
 
   public build(): IvaoWhazzup {
-    return new IvaoWhazzup(this.fileContentsProvider, this.sessionExtractors);
+    return new IvaoWhazzup(this.fileContentsProvider, this.sectionsExtractors);
   }
 }
