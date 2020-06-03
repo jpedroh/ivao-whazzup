@@ -4,11 +4,10 @@
   "description": "A simple library for retrieving IVAO Whazzup data.",
   "main": "dist/index.js",
   "scripts": {
-    "test": "jest",
-    "test:unit": "jest tests/unit/",
-    "test:integration": "jest tests/integration/",
-    "test:watch": "jest --watch",
-    "test:unit-coverage": "jest tests/unit/ --coverage",
+    "test": "jest --verbose",
+    "test:unit": "npm run test -- tests/unit/",
+    "test:integration": "npm run test -- tests/integration/",
+    "test:unit-coverage": "npm run test -- tests/unit/ --coverage",
     "lint": "eslint src/ tests/ --ext .ts",
     "build": "tsc"
   },
