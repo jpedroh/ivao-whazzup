@@ -1,6 +1,8 @@
 # ivao-whazzup
 
 [![npm version](https://badge.fury.io/js/ivao-whazzup.svg)](https://badge.fury.io/js/ivao-whazzup)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+![Test](https://github.com/jpedroh/ivao-whazzup/workflows/Test/badge.svg)
 
 A simple library for retrieving IVAO Whazzup data.
 
@@ -13,24 +15,23 @@ yarn add ivao-whazzup
 
 ## Usage
 
-Before you begin, you must first build the object using the provided builder.
+Before you begin, you must first build the object. This is done by using the provided builder.
 
 ```typescript
-import IvaoWhazzupBuilder from 'ivao-whazzup'
+import IvaoWhazzup from 'ivao-whazzup';
 
-const ivaoWhazzup = IvaoWhazzupBuilder.build()
+const ivaoWhazzupBuilder = IvaoWhazzup.makeBuilder();
+const ivaoWhazzup = ivaoWhazzupBuilder.build();
 ```
 
 After that, you're good to go, and all you need to do is call the function `fetchData()` which will restore data from the IVAO Whazzup file.
 
 ```typescript
-import IvaoWhazzupBuilder from 'ivao-whazzup'
+import IvaoWhazzup from 'ivao-whazzup';
 
-const ivaoWhazzup = IvaoWhazzupBuilder.build()
-ivaoWhazzup
-  .fetchData()
-  .then(console.log)
-  .catch(console.error)
+const ivaoWhazzupBuilder = IvaoWhazzup.makeBuilder();
+const ivaoWhazzup = ivaoWhazzupBuilder.build();
+ivaoWhazzup.fetchData().then(console.log).catch(console.error);
 ```
 
 ### Customizing the File Contents Provider
@@ -50,15 +51,11 @@ class MyFileContentsProvider implements FileContentsProvider {
 And then, do:
 
 ```typescript
-import IvaoWhazzupBuilder from 'ivao-whazzup'
+import IvaoWhazzup from 'ivao-whazzup';
 
-const ivaoWhazzup = IvaoWhazzupBuilder.overridingFileContentsProvider(
-  new MyFileContentsProvider()
-).build()
-ivaoWhazzup
-  .fetchData()
-  .then(console.log)
-  .catch(console.error)
+const ivaoWhazzupBuilder = IvaoWhazzup.makeBuilder();
+const ivaoWhazzup = ivaoWhazzupBuilder.overridingFileContentsProvider(new MyFileContentsProvider()).build();
+ivaoWhazzup.fetchData().then(console.log).catch(console.error);
 ```
 
 ## Use terms
