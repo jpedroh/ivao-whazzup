@@ -15,7 +15,8 @@ describe('Clients Extractor', () => {
   describe('Given input from Whazzup File will return a single ATC', () => {
     const input = [
       '!CLIENTS',
-      'CALLSIGN:123456:A NAME:ATC:121.900:-23.6261:-46.6564:0:0::::::SHARD2:B:4:0:3:10::::::::::::::::AN EXAMPLE ATIS:20200602202220:20200602181157:ATCClient:1.0:2:4:::::::',
+      'CALLSIGN:123456:A NAME:ATC:121.900:-23.6261:-46.6564:0:0::::::SHARD2:B:4:0:3:10::::::::::::::::' +
+        'AN EXAMPLE ATIS:20200602202220:20200602181157:ATCClient:1.0:2:4:::::::',
       '!AIRPORTS',
     ];
 
@@ -50,7 +51,8 @@ describe('Clients Extractor', () => {
   describe('Given input from Whazzup File will return a single FOLLOW-ME', () => {
     const input = [
       '!CLIENTS',
-      'CALLSIGN:123456:A NAME:FOLME:121.900:-23.6261:-46.6564:0:0::::::SHARD2:B:4:0:3:10::::::::::::::::AN EXAMPLE ATIS:20200602202220:20200602181157:ATCClient:1.0:2:4:::::::',
+      'CALLSIGN:123456:A NAME:FOLME:121.900:-23.6261:-46.6564:0:0::::::SHARD2:B:4:0:3:10::::::::::::::::' +
+        'AN EXAMPLE ATIS:20200602202220:20200602181157:ATCClient:1.0:2:4:::::::',
       '!AIRPORTS',
     ];
 
@@ -80,7 +82,8 @@ describe('Clients Extractor', () => {
   describe('Given input from Whazzup File will return a single pilot without flight plan', () => {
     const input = [
       '!CLIENTS',
-      'CALLSIGN:123456:A NAME:PILOT::4.81437:-75.7384:4384:0::::::EU4:B:3:1447:0:50::::::::::::::::::20200603030157:X-IvAp/win:0.4.0:2:3::::72:1:16:RANDOM-MTL-STRING',
+      'CALLSIGN:123456:A NAME:PILOT::4.81437:-75.7384:4384:0::::::EU4:B:3:1447:0:50::::::::::::::::::' +
+        '20200603030157:X-IvAp/win:0.4.0:2:3::::72:1:16:RANDOM-MTL-STRING',
       '!AIRPORTS',
     ];
 
@@ -117,7 +120,9 @@ describe('Clients Extractor', () => {
   describe('Given input from Whazzup File will return a single pilot with filled flight plan', () => {
     const input = [
       '!CLIENTS',
-      'CALLSIGN:123456:A NAME:PILOT::-19.0666:-44.0451:15555:297:1/B738/M-SACDE1FGIRTWYZ/S:N0420:SBMK:F260:SBCF:EU7:B:3:2000:0:50:1:I:245:245:0:38:5:40:SBGR:OPR/GOLLINHASAEREAS PER/E RMK/TCAS EQUIPPED:MILOL UZ4 OPLEX:::::::20200603004601:IvAp:2.0.2:2:3:SBGL:S:163:178:0:0:RANDOM-MTL-STRING',
+      'CALLSIGN:123456:A NAME:PILOT::-19.0666:-44.0451:15555:297:1/B738/M-SACDE1FGIRTWYZ/S:N0420:SBMK:F260:' +
+        'SBCF:EU7:B:3:2000:0:50:1:I:245:245:0:38:5:40:SBGR:OPR/GOLLINHASAEREAS PER/E RMK/TCAS EQUIPPED:MILOL' +
+        ' UZ4 OPLEX:::::::20200603004601:IvAp:2.0.2:2:3:SBGL:S:163:178:0:0:RANDOM-MTL-STRING',
       '!AIRPORTS',
     ];
 
