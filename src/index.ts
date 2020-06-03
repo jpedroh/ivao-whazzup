@@ -1,7 +1,10 @@
-import IvaoWhazzupBuilder from './ivao-whazzup-builder'
-import ApiFileContentsProvider from './file-contents-provider/api-file-contents-provider'
-import Axios from 'axios'
+import IvaoWhazzupBuilder from './IvaoWhazzupBuilder';
+import ApiFileContentsProvider from './providers/ApiFileContentsProvider';
+import AxiosHttpClient from './utils/AxiosHttpClient';
+import sessionExtractors from './extractors';
 
-const defaultFileContentsProvider = new ApiFileContentsProvider(Axios)
+const defaultContentsProvider = new ApiFileContentsProvider(new AxiosHttpClient());
 
-export default new IvaoWhazzupBuilder(defaultFileContentsProvider)
+export default {
+  makeBuilder: (): IvaoWhazzupBuilder => new IvaoWhazzupBuilder(defaultContentsProvider, sessionExtractors),
+};

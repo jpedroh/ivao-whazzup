@@ -1,3 +1,3 @@
 export default interface FileContentsProvider {
-  getFileLines(): Promise<string[]>
+  getFileLines(): Promise<string[]>;
 }

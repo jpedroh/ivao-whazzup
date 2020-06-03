@@ -1,7 +1,31 @@
-/* eslint-disable @typescript-eslint/explicit-function-return-type */
+import IvaoWhazzup from '../../src/index';
+import IvaoWhazzupBuilder from '../../src/IvaoWhazzupBuilder';
 
-describe('ApiFileContentsProvider', () => {
-  test('Given server responds with file contents', () => {
-    expect(1).toEqual(1)
-  })
-})
+describe('Integration Testing', () => {
+  let builder: IvaoWhazzupBuilder;
+
+  beforeEach(() => {
+    builder = IvaoWhazzup.makeBuilder();
+  });
+
+  test('Testing with custom provider', async () => {
+    const customProvider = {
+      getFileLines: () => import('./fixtures/whazzup-file-lines.json'),
+    };
+    const expectedSerializedOutput = JSON.stringify(await import('./fixtures/expected-whazzup-output.json'));
+
+    const ivaoWhazzup = builder.overridingFileContentsProvider(customProvider).build();
+    const ivaoData = await ivaoWhazzup.fetchData();
+    const serializedOutput = JSON.stringify(ivaoData);
+
+    expect(serializedOutput).toEqual(expectedSerializedOutput);
+  });
+
+  test('Testing with default API provider', async () => {
+    const ivaoWhazzup = builder.build();
+    const ivaoData = await ivaoWhazzup.fetchData();
+
+    expect(ivaoData.servers.length).toEqual(ivaoData.generalInformation.totalConnections.servers);
+    expect(ivaoData.airports.length).toEqual(ivaoData.generalInformation.totalConnections.airports);
+  });
+});
