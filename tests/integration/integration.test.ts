@@ -16,8 +16,9 @@ describe('Integration Testing', () => {
 
     const ivaoWhazzup = builder.overridingFileContentsProvider(customProvider).build();
     const ivaoData = await ivaoWhazzup.fetchData();
+    const serializedOutput = JSON.stringify(ivaoData);
 
-    expect(JSON.stringify(ivaoData)).toEqual(expectedSerializedOutput);
+    expect(serializedOutput).toEqual(expectedSerializedOutput);
   });
 
   test('Testing with default API provider', async () => {

@@ -56,6 +56,18 @@
       "facilityType": 0,
       "visualRange": 300,
       "atis": { "content": "NO VOICE/BR-TA5", "definedAt": "2020-06-02T18:24:46.000Z" }
+    },
+    {
+      "callsign": "UNIT35",
+      "member": { "vid": 591228, "name": "591228", "rating": 3, "administrativeRating": 2 },
+      "position": { "latitude": 43.4373, "longitude": 5.21963, "altitude": 83 },
+      "connection": {
+        "type": "FOLME",
+        "connectionTime": "2020-06-02T19:53:26.000Z",
+        "serverName": "EU4",
+        "protocolVersion": "B"
+      },
+      "software": { "name": "X-IvAp/win", "version": "0.4.0" }
     }
   ]
 }

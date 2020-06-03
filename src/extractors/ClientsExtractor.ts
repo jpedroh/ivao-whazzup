@@ -11,6 +11,7 @@ import Software from '../vos/Software';
 import WhazzupFile from '../WhazzupFile';
 import BaseExtractor from './BaseExtractor';
 import FileSectionExtractor from './FileSectionExtractor';
+import FollowMe from '../models/FollowMe';
 
 export default class ClientsExtractor extends BaseExtractor implements FileSectionExtractor {
   public extractFromFileLines(lines: string[]): Partial<WhazzupFile> {
@@ -21,6 +22,8 @@ export default class ClientsExtractor extends BaseExtractor implements FileSecti
       const baseClient = this.extractBaseClient(clientData);
       if (baseClient.connection.type === ConnectionType.ATC) {
         return this.extractAtc(baseClient, clientData);
+      } else if (baseClient.connection.type === ConnectionType.FOLLOW_ME) {
+        return new FollowMe(baseClient);
       }
       return null;
     });
