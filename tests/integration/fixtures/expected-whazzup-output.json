@@ -3,7 +3,7 @@
     "version": 6,
     "minutesUntilReload": 1,
     "lastUpdatedAt": "2020-06-02T20:55:14.000Z",
-    "totalConnections": { "clients": 1052, "servers": 2, "airports": 0 }
+    "totalConnections": { "clients": 1052, "servers": 2, "airports": 1 }
   },
   "servers": [
     {
@@ -21,6 +21,12 @@
       "name": "IVAO EU15 - IVAO Network",
       "clientConnectionsAllowed": false,
       "maximumConnections": 1000
+    }
+  ],
+  "airports": [
+    {
+      "icao": "SBBV",
+      "atis": "THIS IS JUST AN EXAMPLE"
     }
   ]
 }
