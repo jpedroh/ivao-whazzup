@@ -1,15 +1,17 @@
 {
   "name": "ivao-whazzup",
-  "version": "2.0.0-rc1",
+  "version": "2.0.0",
   "description": "A simple library for retrieving IVAO Whazzup data.",
   "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "test": "jest --verbose",
     "test:unit": "npm run test -- tests/unit/",
     "test:integration": "npm run test -- tests/integration/",
     "test:unit-coverage": "npm run test -- tests/unit/ --coverage",
     "lint": "eslint src/ tests/ --ext .ts",
-    "build": "tsc"
+    "build": "tsc",
+    "prepublish": "tsc"
   },
   "repository": {
     "type": "git",
