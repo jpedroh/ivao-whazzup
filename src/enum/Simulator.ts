@@ -20,6 +20,7 @@ enum Simulator {
   FLY_2 = 21,
   FLIGHTGEAR = 25,
   PREPAR3D_1_X = 30,
+  MICROSOFT_FLIGHT_SIMULATOR_2020 = 40,
 }
 
 export default Simulator;
