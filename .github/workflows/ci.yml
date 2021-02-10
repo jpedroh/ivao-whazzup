@@ -1,5 +1,6 @@
-name: Test
+name: CI
 on: [push]
+
 jobs:
   linting:
     runs-on: ubuntu-latest
@@ -27,7 +28,7 @@ jobs:
 
       - name: Test
         run: yarn test:unit-coverage
-        
+
       - name: Upload code coverage
         uses: coverallsapp/github-action@master
         with:
@@ -45,3 +46,20 @@ jobs:
 
       - name: Test
         run: yarn test:integration
+  deploy:
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/master' || github.ref == 'refs/heads/main'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          persist-credentials: false
+
+      - name: Install
+        run: yarn install
+
+      - name: Build
+        run: yarn build
+
+      - name: Deploy
+        run: yarn release-it --ci
