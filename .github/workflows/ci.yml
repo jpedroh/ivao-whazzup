@@ -48,7 +48,7 @@ jobs:
         run: yarn test:integration
   deploy:
     runs-on: ubuntu-latest
-       if: github.ref == 'refs/heads/master' || github.ref == 'refs/heads/main'
+    if: github.ref == 'refs/heads/master' || github.ref == 'refs/heads/main'
     needs: [lint, unit-test, integration-test]
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
