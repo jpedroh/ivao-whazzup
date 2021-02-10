@@ -49,7 +49,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     #    if: github.ref == 'refs/heads/master' || github.ref == 'refs/heads/main'
-    needs: [lint, unit-test, integration-test]
+    # needs: [lint, unit-test, integration-test]
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -58,7 +58,8 @@ jobs:
 
       - uses: actions/setup-node@v2
         with:
-          registry-url: 'https://registry.npmjs.org'
+          always-auth: true
+      # - run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
 
       - name: Install
         run: yarn install
