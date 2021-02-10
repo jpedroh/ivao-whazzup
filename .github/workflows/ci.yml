@@ -59,10 +59,9 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: Configure git
-        run: |
-          git config --global user.email "joao.pedro.hsd@gmail.com"
-          git config --global user.name "Joao Pedro Henrique"
+      - uses: oleksiyrudenko/gha-git-credentials@v2-latest
+        with:
+          token: '${{ secrets.GITHUB_TOKEN }}'
 
       - name: Install
         run: yarn install
