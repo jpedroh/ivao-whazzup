@@ -2,50 +2,50 @@ name: CI
 on: [push]
 
 jobs:
-  lint:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-        with:
-          persist-credentials: false
+  # lint:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@v2
+  #       with:
+  #         persist-credentials: false
 
-      - name: Install
-        run: yarn install
+  #     - name: Install
+  #       run: yarn install
 
-      - name: Linting
-        run: yarn lint
-  unit-test:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-        with:
-          persist-credentials: false
+  #     - name: Linting
+  #       run: yarn lint
+  # unit-test:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@v2
+  #       with:
+  #         persist-credentials: false
 
-      - name: Install
-        run: yarn install
+  #     - name: Install
+  #       run: yarn install
 
-      - name: Test
-        run: yarn test:unit-coverage
+  #     - name: Test
+  #       run: yarn test:unit-coverage
 
-      - name: Upload code coverage
-        uses: coverallsapp/github-action@master
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-  integration-test:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-        with:
-          persist-credentials: false
+  #     - name: Upload code coverage
+  #       uses: coverallsapp/github-action@master
+  #       with:
+  #         github-token: ${{ secrets.GITHUB_TOKEN }}
+  # integration-test:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@v2
+  #       with:
+  #         persist-credentials: false
 
-      - name: Install
-        run: yarn install
+  #     - name: Install
+  #       run: yarn install
 
-      - name: Test
-        run: yarn test:integration
+  #     - name: Test
+  #       run: yarn test:integration
   deploy:
     runs-on: ubuntu-latest
     #    if: github.ref == 'refs/heads/master' || github.ref == 'refs/heads/main'
@@ -65,6 +65,10 @@ jobs:
 
       - name: Build
         run: yarn build
+
+      - run: yarn login
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Deploy
         run: yarn release-it --ci --dry-run
