@@ -57,6 +57,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
+      - uses: oleksiyrudenko/gha-git-credentials@v2-latest
+        with:
+          token: '${{ secrets.GITHUB_TOKEN }}'
+
       - name: Install
         run: yarn install
 
