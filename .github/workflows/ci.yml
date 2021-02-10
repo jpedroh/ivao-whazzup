@@ -67,7 +67,6 @@ jobs:
 
       - name: Generate .npmrc
         run: echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > .npmrc
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Deploy
         run: yarn release-it --ci --npm.skipChecks --dry-run
