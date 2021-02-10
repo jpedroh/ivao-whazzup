@@ -65,8 +65,10 @@ jobs:
       - name: Build
         run: yarn build
 
-      - name: Generate .npmrc
-        run: echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > .npmrc
+      - name: Generate .npmrc and alter yarn registry
+        run: |
+          echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > .npmrc
+          yarn config set registry https://registry.npmjs.org/
 
       - name: Deploy
         run: yarn release-it --ci --npm.skipChecks
