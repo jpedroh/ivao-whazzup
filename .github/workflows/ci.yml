@@ -69,4 +69,4 @@ jobs:
         run: echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > .npmrc
 
       - name: Deploy
-        run: yarn release-it --ci --npm.skipChecks --dry-run
+        run: yarn release-it --ci --npm.skipChecks
