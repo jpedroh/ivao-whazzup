@@ -2,7 +2,7 @@ name: CI
 on: [push]
 
 jobs:
-  linting:
+  lint:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -33,7 +33,7 @@ jobs:
         uses: coverallsapp/github-action@master
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-  integration-testing:
+  integration-test:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -49,6 +49,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/master' || github.ref == 'refs/heads/main'
+    needs: [lint, unit-test, integration-test]
     steps:
       - name: Checkout
         uses: actions/checkout@v2
