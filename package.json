@@ -1,6 +1,6 @@
 {
   "name": "ivao-whazzup",
-  "version": "2.1.7",
+  "version": "0.0.0-development",
   "description": "A simple library for retrieving IVAO Whazzup data.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -11,8 +11,7 @@
     "test:unit-coverage": "npm run test -- tests/unit/ --coverage",
     "test:ci": "npm run test -- --coverage",
     "lint": "eslint src/ tests/ --ext .ts",
-    "build": "tsc",
-    "prepublish": "tsc"
+    "build": "tsc"
   },
   "repository": {
     "type": "git",
@@ -26,12 +25,13 @@
   "homepage": "https://github.com/jpedroh/ivao-whazzup#readme",
   "devDependencies": {
     "@release-it/conventional-changelog": "^2.0.0",
+    "@semantic-release/changelog": "^5.0.1",
     "@types/jest": "^26.0.3",
     "@typescript-eslint/eslint-plugin": "^4.0.0",
     "@typescript-eslint/parser": "^3.1.0",
     "eslint": "^7.1.0",
     "jest": "^26.0.1",
-    "release-it": "^14.3.0",
+    "semantic-release": "^17.3.8",
     "ts-jest": "^26.1.0",
     "typescript": "^4.0.2"
   },
