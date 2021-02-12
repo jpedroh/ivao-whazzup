@@ -24,7 +24,6 @@
   },
   "homepage": "https://github.com/jpedroh/ivao-whazzup#readme",
   "devDependencies": {
-    "@release-it/conventional-changelog": "^2.0.0",
     "@semantic-release/changelog": "^5.0.1",
     "@types/jest": "^26.0.3",
     "@typescript-eslint/eslint-plugin": "^4.0.0",
