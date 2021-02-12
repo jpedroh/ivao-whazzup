@@ -3,49 +3,37 @@ on: [push]
 
 jobs:
   lint:
+    name: Lint
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
         with:
-          persist-credentials: false
-
-      - name: Install
-        run: yarn install
-
-      - name: Linting
-        run: yarn lint
-  unit-test:
+          node-version: 14
+      - run: yarn install
+      - run: yarn lint
+  test:
+    name: Test - ${{ matrix.node-version }}
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        node-version:
+          - 15
+          - 14
+          - 12
+          - 10
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
         with:
-          persist-credentials: false
-
-      - name: Install
-        run: yarn install
-
-      - name: Test
-        run: yarn test:unit-coverage
-
+          node-version: ${{ matrix.node-version }}
+      - run: yarn install
+      - run: yarn test:ci
       - name: Upload code coverage
         uses: coverallsapp/github-action@master
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-  integration-test:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-        with:
-          persist-credentials: false
-
-      - name: Install
-        run: yarn install
-
-      - name: Test
-        run: yarn test:integration
   deploy:
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/master' || github.ref == 'refs/heads/main'
