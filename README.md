@@ -3,7 +3,6 @@
 [![npm version](https://badge.fury.io/js/ivao-whazzup.svg)](https://badge.fury.io/js/ivao-whazzup)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 ![CI](https://github.com/jpedroh/ivao-whazzup/workflows/CI/badge.svg)
-![Publish on NPM](https://github.com/jpedroh/ivao-whazzup/workflows/Publish%20on%20NPM/badge.svg)
 [![Codebeat](https://codebeat.co/badges/d7fb7509-513e-4b3a-a552-79ae80b3a551)](https://codebeat.co/projects/github-com-jpedroh-ivao-whazzup-master)
 [![Coverage Status](https://coveralls.io/repos/github/jpedroh/ivao-whazzup/badge.svg?branch=master)](https://coveralls.io/github/jpedroh/ivao-whazzup?branch=master)
 

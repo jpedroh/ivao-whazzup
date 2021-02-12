@@ -22,10 +22,10 @@ describe('ApiFileContentsProvider', () => {
   });
 
   describe('Given server responds with an error', () => {
-    httpClientMock.get.mockImplementationOnce(() => Promise.reject());
+    httpClientMock.get.mockRejectedValueOnce(() => Promise.reject());
 
-    test('It should encapsulate error into a FileContentsRetrievalException', () => {
-      expect(provider.getFileLines()).rejects.toBeInstanceOf(FileContentsRetrievalException);
+    test('It should encapsulate error into a FileContentsRetrievalException', async () => {
+      await expect(provider.getFileLines()).rejects.toThrowError(FileContentsRetrievalException);
     });
   });
 });
