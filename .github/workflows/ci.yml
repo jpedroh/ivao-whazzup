@@ -13,7 +13,7 @@ jobs:
       - run: yarn install
       - run: yarn lint
   test:
-    name: Test - ${{ matrix.node-version }}
+    name: Test - Node ${{ matrix.node-version }}
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
