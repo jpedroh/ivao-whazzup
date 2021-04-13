@@ -5,6 +5,7 @@
 ![CI](https://github.com/jpedroh/ivao-whazzup/workflows/CI/badge.svg)
 [![Codebeat](https://codebeat.co/badges/d7fb7509-513e-4b3a-a552-79ae80b3a551)](https://codebeat.co/projects/github-com-jpedroh-ivao-whazzup-master)
 [![Coverage Status](https://coveralls.io/repos/github/jpedroh/ivao-whazzup/badge.svg?branch=master)](https://coveralls.io/github/jpedroh/ivao-whazzup?branch=master)
+[![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
 
 A simple library for retrieving IVAO Whazzup data.
 
