@@ -4,6 +4,7 @@ import FlightRule from '../enum/FlightRule';
 import FlightType from '../enum/FlightType';
 import Simulator from '../enum/Simulator';
 import WakeTurbulence from '../enum/WakeTurbulence';
+import InvalidClientTypeException from '../exception/InvalidClientTypeException';
 import Atc from '../models/Atc';
 import Client from '../models/Client';
 import FollowMe from '../models/FollowMe';
@@ -34,7 +35,7 @@ export default class ClientsExtractor extends BaseExtractor implements FileSecti
       } else if (baseClient.connection.type === ConnectionType.PILOT) {
         return this.extractPilot(baseClient, clientData);
       }
-      return baseClient;
+      throw new InvalidClientTypeException();
     });
 
     return { clients };
