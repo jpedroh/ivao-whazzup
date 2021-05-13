@@ -1,9 +1,9 @@
 version: 2
 updates:
-  - package-ecosystem: "npm"
-    directory: "/"
-    target-branch: "master"
+  - package-ecosystem: 'npm'
+    directory: '/'
+    target-branch: 'master'
     schedule:
-      interval: "daily"
+      interval: 'daily'
     commit-message:
-      prefix: "build"
+      prefix: 'build'
