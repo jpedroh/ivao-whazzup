@@ -1,3 +1,15 @@
+# [3.1.0](https://github.com/jpedroh/ivao-whazzup/compare/v3.0.0...v3.1.0) (2021-05-13)
+
+
+### Features
+
+* Clients Extractor throws exception on invalid Client Type ([#161](https://github.com/jpedroh/ivao-whazzup/issues/161)) ([66b6063](https://github.com/jpedroh/ivao-whazzup/commit/66b6063c3894779ea7aab239c7f7a35d61461abe))
+
+
+### Reverts
+
+* Revert "tests: add missing test cases (#159)" (#160) ([3bb5fb0](https://github.com/jpedroh/ivao-whazzup/commit/3bb5fb098641ac4b005123afb4893197c8315704)), closes [#159](https://github.com/jpedroh/ivao-whazzup/issues/159) [#160](https://github.com/jpedroh/ivao-whazzup/issues/160)
+
 # [3.0.0](https://github.com/jpedroh/ivao-whazzup/compare/v2.1.9...v3.0.0) (2021-05-13)
 
 
@@ -49,6 +61,3 @@
 
 
 # 2.0.0-rc1 (2020-06-03)
-
-
-
