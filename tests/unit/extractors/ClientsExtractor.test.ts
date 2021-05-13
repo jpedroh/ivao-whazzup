@@ -8,8 +8,6 @@ import FacilityType from '../../../src/enum/FacilityType';
 import Simulator from '../../../src/enum/Simulator';
 import WakeTurbulence from '../../../src/enum/WakeTurbulence';
 import FlightRule from '../../../src/enum/FlightRule';
-import FlightType from '../../../src/enum/FlightType';
-import InvalidClientTypeException from '../../../src/exception/InvalidClientTypeException';
 
 describe('Clients Extractor', () => {
   const processor = new ClientsExtractor();
@@ -172,23 +170,8 @@ describe('Clients Extractor', () => {
       expect(pilot.flightPlan.remarks).toEqual('OPR/GOLLINHASAEREAS PER/E RMK/TCAS EQUIPPED');
       expect(pilot.flightPlan.route).toEqual('MILOL UZ4 OPLEX');
       expect(pilot.flightPlan.secondAlternate).toEqual('SBGL');
-      expect(pilot.flightPlan.flightType).toEqual(FlightType.SCHEDULED);
+      expect(pilot.flightPlan.flightType).toEqual('S');
       expect(pilot.flightPlan.personsOnBoard).toEqual(163);
-    });
-  });
-
-  describe('Given input from Whazzup File will return invalid connection type', () => {
-    const input = [
-      '!CLIENTS',
-      'CALLSIGN:123456:A NAME:INVALID_CLIENT_TYPE::-19.0666:-44.0451:15555:297:1/B738/M-SACDE1FGIRTWYZ/S:' +
-        'N0420:SBMK:F260:SBCF:EU7:B:3:2000:0:50:1:I:245:245:0:38:5:40:SBGR:' +
-        'OPR/GOLLINHASAEREAS PER/E RMK/TCAS EQUIPPED:MILOL UZ4 OPLEX:::::::20200603004601:IvAp:2.0.2:2:3:' +
-        'SBGL:S:163:178:0:0:RANDOM-MTL-STRING',
-      '!AIRPORTS',
-    ];
-
-    test('Extract should throw InvalidClientTypeException', () => {
-      expect(() => processor.extractFromFileLines(input)).toThrow(InvalidClientTypeException);
     });
   });
 });
